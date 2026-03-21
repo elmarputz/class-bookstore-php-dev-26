@@ -1,5 +1,7 @@
 <?php 
 
+require_once("inc/bootstrap.php");
+
 $view = "welcome";
 
 if (isset($_REQUEST["view"])
