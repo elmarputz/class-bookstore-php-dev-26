@@ -11,3 +11,8 @@ spl_autoload_register(function ($class) {
         require_once($filename);
     }
 });
+
+$mode = "mock";
+// $mnode = "pdo";
+
+require_once(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "lib" . DIRECTORY_SEPARATOR . 'Data' . DIRECTORY_SEPARATOR . 'DataManager_' .$mode . ".php");

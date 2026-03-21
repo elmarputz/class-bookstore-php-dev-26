@@ -2,6 +2,6 @@
 namespace Data;
 
 interface IDataManager {
-    public function getBooksByCategory(int $categoryId): array;
-    public function getCategories(): array;
+    public static function getBooksByCategory(int $categoryId): array;
+    public static function getCategories(): array;
 }

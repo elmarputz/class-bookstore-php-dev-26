@@ -1,11 +1,8 @@
 <?php 
+use Data\DataManager;
 
-
-$book = new Bookshop\Book(1, 1, "The Great Gatsby", "F. Scott Fitzgerald", 10.99);
-var_dump($book);
-
-$category = new Bookshop\Category(1, "Fiction");
-var_dump($category);
+$categories = DataManager::getCategories();
+var_dump($categories);
 
 require_once("views/partials/header.php"); ?>
 
