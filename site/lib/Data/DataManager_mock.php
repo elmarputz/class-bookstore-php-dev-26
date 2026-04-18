@@ -80,4 +80,11 @@ class DataManager implements IDataManager {
         }
         return $res;            
     }
+
+    public static function getBooksForSearchCriteriaWithPaging(string $term, int $offset, int $numPerPage): array {
+        // Mock data for demonstration
+        $allResults = self::getBooksForSearchCriteria($term);
+        return array_slice($allResults, $offset, $epp);
+    }
+
 }
