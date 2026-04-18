@@ -88,4 +88,25 @@ class DataManager implements IDataManager {
         return new PagingResult(array_slice($allResults, $offset, $numPerPage), $offset, count($allResults));
     }
 
+    public static function getUserByUserName(string $userName): ?User {
+        // Mock data for demonstration
+        foreach (self::getMockData('users') as $user) {
+            if ($user->getUserName() === $userName) {
+                return $user;
+            }
+        }
+        return null;            
+    }
+
+
+    public static function getUserById(int $userId): ?User {
+        // Mock data for demonstration
+        foreach (self::getMockData('users') as $user) {
+            if ($user->getId() === $userId) {
+                return $user;
+            }
+        }
+        return null;            
+    }
+
 }

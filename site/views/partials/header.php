@@ -1,3 +1,15 @@
+<?php
+
+use Bookshop\AuthenticationManager;
+use Bookshop\Util;
+use Bookshop\ShoppingCart;
+
+$user = AuthenticationManager::getAuthenticatedUser();
+$cartSize = ShoppingCart::size();
+$errors = $_SESSION['errors'] ?? null;
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,12 +49,13 @@
             <ul class="nav navbar-nav navbar-right login">
                 <li  class="nav-item"> 
                     <a href="index.php?view=checkout" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Zum Checkout">
-                       <span class="badge bg-secondary">0</span>
+                       <span class="badge bg-secondary"><?php echo $cartSize; ?></span>
                        <span class="bi bi-cart4" aria-hidden="true"></span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                                            <a href="#" class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                           <?php if ($user == null): ?>
+                        <a href="#" class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" role="button" aria-expanded="false">
                             Not logged in!
                             <b class="caret"></b>
                         </a>
@@ -51,6 +64,19 @@
                                 <a class="dropdown-item" href="index.php?view=login">Login now</a>
                             </li>
                         </ul>
+                    <?php else: ?>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                  Logged in as  <span class="badge bg-primary"><?php echo Util::escape($user->getUserName()); ?></span>
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li class="nav-item text-center">
+                    <form method="post" action="<?php echo Util::action(Bookshop\Controller::ACTION_LOGOUT); ?>">
+                      <button class="btn btn-sm btn-primary" role="button" type="submit">Logout</button>
+                    </form>
+                    </li>
+                  </ul>
+              <?php endif; ?>
                                     </li>
             </ul> <!-- /. login -->
         </div><!--/.nav-collapse -->

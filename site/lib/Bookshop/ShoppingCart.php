@@ -22,6 +22,19 @@ class ShoppingCart {
         return array_key_exists($bookId, $cart);
     }
 
+
+    public static function size() : int {
+        return sizeof(self::getCart());
+    }
+
+    public static function getAll() : array {
+        return self::getCart();
+    }
+
+    public static function clear() : void {
+        self::storeCart(array());
+    }
+
   private static function getCart() : array {
     return $_SESSION['cart'] ?? array();
   }

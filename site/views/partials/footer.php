@@ -1,7 +1,12 @@
-<!--display error messages-->
+<?php 
 
+if (isset($error) && is_array($error)) {
+    foreach ($error as $err) {
+        echo '<div class="alert alert-danger" role="alert">' . $err . '</div>';
+    }
+}
+?>
 
-<!--/display error messages-->
 
 <div class="footer">
 
@@ -10,7 +15,7 @@
   <div class="row">
     <div class="col-md-4">
     <a href="index.php?view=checkout" class="footer-link"  data-bs-toggle="tooltip" data-bs-placement="top" title="Zum Checkout">
-        <span class="badge bg-secondary">0</span> <span class="bi bi-cart4" aria-hidden="true"></span>
+        <span class="badge bg-secondary"><?php echo $cartSize; ?></span> <span class="bi bi-cart4" aria-hidden="true"></span>
       </a>
     </div>
     <div class="col-md-4 ms-auto text-end">
