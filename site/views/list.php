@@ -4,7 +4,7 @@ use Data\DataManager;
 $categories = DataManager::getCategories();
 $categoryId = isset($_REQUEST['categoryId']) ? (int)$_REQUEST['categoryId'] : null;
 $books = $categoryId ? DataManager::getBooksByCategory($categoryId) : null;
-var_dump($books);
+
 
 require_once("views/partials/header.php"); ?>
 
@@ -22,6 +22,14 @@ require_once("views/partials/header.php"); ?>
     <?php endforeach; ?>
 
 </ul>
+<br />
+<?php if (isset($books)): ?>
+    <?php require_once("views/partials/booklist.php"); ?>
+<?php else: ?>
+    <div class="alert alert-info">
+        <p>Please select a category to view the books.</p>
+    </div>
+<?php endif; ?>
 
 
 <?php require_once("views/partials/footer.php"); ?>
