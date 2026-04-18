@@ -32,12 +32,8 @@
                 <li class="nav-item"><a class="nav-link <?php if ($view === "checkout"): ?>active<?php endif; ?>" href="index.php?view=checkout">Checkout</a></li>
             </ul>
     
-            
-<form class="d-flex me-auto" action="/index.php" method="get">
-      <input type="hidden" name="view" value="search" />
-      <input class="form-control form-control-sm me-2" type="search" id="title" name="title" placeholder="Search book by title..." value="" aria-label="Search">
-      <button class="btn btn-outline-success btn-sm" type="submit">Search</button>
-</form>
+            <?php require_once("views/partials/searchform.php"); ?>
+
             <ul class="nav navbar-nav navbar-right login">
                 <li  class="nav-item"> 
                     <a href="index.php?view=checkout" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Zum Checkout">

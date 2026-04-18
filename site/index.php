@@ -21,6 +21,8 @@ if ($postAction !== null) {
     }
 }
 
+phpinfo();
+
 
 require_once("views/" . $view . ".php");
 
