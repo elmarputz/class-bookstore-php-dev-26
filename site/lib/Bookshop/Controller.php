@@ -21,23 +21,28 @@ class Controller {
     private function __construct() {}
 
     public function invokePostAction() : never {
+           
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
            throw new \Exception('Invalid request method');
         }
-        elseif (!isset($_POST[self::ACTION])) {
+        elseif (!isset($_REQUEST[self::ACTION])) {
             throw new \Exception('Missing action parameter');
         }
 
-        $action = $_POST[self::ACTION];
+    
+        $action = $_REQUEST[self::ACTION];
+
         switch ($action) {
             case self::ACTION_ADD:
-                ShoppingCart::add((int)$_POST['bookId']);
-                Util:redirect();
+           
+                ShoppingCart::add((int)$_REQUEST['bookId']);
+                Util::redirect();
+            
                 break;
             case self::ACTION_REMOVE:
-                ShoppingCart::remove((int)$_POST['bookId']);
-                Util:redirect();
+                ShoppingCart::remove((int)$_REQUEST['bookId']);
+                Util::redirect();
                 break;
             default:
                 throw new \Exception('Unknown action: ' . $action);
