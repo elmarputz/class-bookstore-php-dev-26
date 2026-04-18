@@ -1,5 +1,6 @@
 <?php 
 use Bookshop\Util;
+$title = $_REQUEST['title'] ?? null;
 ?>
 
 <form class="d-flex me-auto" action="/index.php" method="get">

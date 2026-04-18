@@ -2,7 +2,8 @@
 namespace Data;
 
 use Bookshop\Book;
-use Bookshop\Category;  
+use Bookshop\Category;
+use Bookshop\PagingResult;
 use Bookshop\User;
 
 class DataManager implements IDataManager {
@@ -81,10 +82,10 @@ class DataManager implements IDataManager {
         return $res;            
     }
 
-    public static function getBooksForSearchCriteriaWithPaging(string $term, int $offset, int $numPerPage): array {
+    public static function getBooksForSearchCriteriaWithPaging(string $term, int $offset, int $numPerPage): PagingResult {
         // Mock data for demonstration
         $allResults = self::getBooksForSearchCriteria($term);
-        return array_slice($allResults, $offset, $epp);
+        return new PagingResult(array_slice($allResults, $offset, $numPerPage), $offset, count($allResults));
     }
 
 }
