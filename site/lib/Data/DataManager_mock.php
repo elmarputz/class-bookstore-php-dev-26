@@ -5,6 +5,7 @@ use Bookshop\Book;
 use Bookshop\Category;
 use Bookshop\PagingResult;
 use Bookshop\User;
+use Override;
 
 class DataManager implements IDataManager {
 
@@ -109,4 +110,10 @@ class DataManager implements IDataManager {
         return null;            
     }
 
+
+    #[Override]
+    public static function createOrder(int $userId, array $bookIds, string $nameOnCard, string $cardNumber): int
+    {
+        return rand();
+    }
 }
