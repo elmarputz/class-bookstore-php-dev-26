@@ -33,4 +33,4 @@ switch (mb_strtolower($mode)) {
 }
 
 
-require_once(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "lib" . DIRECTORY_SEPARATOR . 'Data' . DIRECTORY_SEPARATOR . 'DataManager_' .$mode . ".php");
+require_once(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "lib" . DIRECTORY_SEPARATOR . 'Data' . DIRECTORY_SEPARATOR . 'DataManager_' .$class . ".php");
